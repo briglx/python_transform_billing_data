@@ -38,6 +38,12 @@ Configure the environment variables. Copy `example.env` to `.env` and update the
 
     python ./script/main.py --source "$STORAGE_URL"
 
+This will create several reports in the `output` folder.
+
+* `cost_by_account.csv`
+* `cost_by_meter.csv`
+* `cost_by_month.csv`
+* `cost_by_subscription.csv`
 
 Development
 ===========

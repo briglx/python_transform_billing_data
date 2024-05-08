@@ -79,6 +79,8 @@ async def load_csv_from_azure_blob(blob_url, dest_file):
         data = await stream.readall()
         my_blob.write(data)
 
+    await blob_client.close()
+
     print(f"Downloaded blob data to {dest_file}")
 
 
@@ -113,6 +115,15 @@ async def cost_by_account(df, dest_dir, file_name):
     )
     agg_df.to_csv(file_path, index=False)
 
+async def cost_by_month(df, dest_dir, file_name):
+    """Create Cost by month report."""
+    file_path = os.path.join(dest_dir, file_name)
+    print(f"Creating Cost by Month report to {file_path}")
+    agg_df = (
+        df.groupby("Month").agg({"CostInBillingCurrency": "sum"}).reset_index()
+    )
+    agg_df.to_csv(file_path, index=False)
+
 
 async def main(source, out_dir):
     """Fetch main data."""
@@ -137,12 +148,19 @@ async def main(source, out_dir):
         header=0,
         dtype=BILLING_DETAIL_TYPES,
     )
+
+    # Add temporal columns
+    df["Date"] = pd.to_datetime(df["Date"])
+    df["Month"] = df["Date"].dt.to_period("M")
+    df["Year"] = df["Date"].dt.to_period("Y")
+
     print(df.head())
 
     # Create Reports
     await cost_by_sub(df, report_dir, "cost_by_subscription.csv")
     await cost_by_meter_cat(df, report_dir, "cost_by_meter_cat.csv")
     await cost_by_account(df, report_dir, "cost_by_account.csv")
+    await cost_by_month(df, report_dir, "cost_by_month.csv")
 
 
 if __name__ == "__main__":

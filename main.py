@@ -115,13 +115,12 @@ async def cost_by_account(df, dest_dir, file_name):
     )
     agg_df.to_csv(file_path, index=False)
 
+
 async def cost_by_month(df, dest_dir, file_name):
     """Create Cost by month report."""
     file_path = os.path.join(dest_dir, file_name)
     print(f"Creating Cost by Month report to {file_path}")
-    agg_df = (
-        df.groupby("Month").agg({"CostInBillingCurrency": "sum"}).reset_index()
-    )
+    agg_df = df.groupby("Month").agg({"CostInBillingCurrency": "sum"}).reset_index()
     agg_df.to_csv(file_path, index=False)
 
 

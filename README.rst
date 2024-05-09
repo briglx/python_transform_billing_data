@@ -4,8 +4,6 @@ Python Transform Billing Data
 
 This project shows how to work with Azure billing data using Python. The project uses the Azure SDK for Python to access the billing data and transform it into various reports.
 
-|architecture-overview|
-
 .. image:: ./docs/architecture_overview.png
     :alt: Architecture Overview
     :align: center
@@ -162,5 +160,3 @@ All the unit tests pass All code passes the checks from the linting tools To run
 References
 ==========
 * Package Python Projects https://packaging.python.org/en/latest/tutorials/packaging-projects/
-
-.. |architecture-overview| image:: docs/architecture_overview.png

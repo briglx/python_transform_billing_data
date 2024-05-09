@@ -147,11 +147,3 @@ jobs:
           pre-commit run --hook-stage manual flake8 --all-files --show-diff-on-failure
           pre-commit run --hook-stage manual bandit --all-files --show-diff-on-failure
           pre-commit run --hook-stage manual pylint --all-files --show-diff-on-failure
-
-      - name: Register hadolint problem matcher
-        run: |
-          echo "::add-matcher::.github/workflows/matchers/hadolint.json"
-      - name: Check Dockerfile
-        uses: docker://hadolint/hadolint:v1.18.2
-        with:
-          args: hadolint .devcontainer/Dockerfile

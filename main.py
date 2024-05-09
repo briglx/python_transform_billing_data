@@ -124,6 +124,18 @@ async def cost_by_month(df, dest_dir, file_name):
     agg_df.to_csv(file_path, index=False)
 
 
+async def cost_by_meter(df, dest_dir, file_name):
+    """Create Cost by service report."""
+    file_path = os.path.join(dest_dir, file_name)
+    print(f"Creating Cost by Service report to {file_path}")
+    agg_df = (
+        df.groupby(["Month", "MeterName", "PartNumber"])
+        .agg({"CostInBillingCurrency": "sum"})
+        .reset_index()
+    )
+    agg_df.to_csv(file_path, index=False)
+
+
 async def main(source, out_dir):
     """Fetch main data."""
     assert len(source) > 0, "Source is required."
@@ -156,10 +168,13 @@ async def main(source, out_dir):
     print(df.head())
 
     # Create Reports
-    await cost_by_sub(df, report_dir, "cost_by_subscription.csv")
-    await cost_by_meter_cat(df, report_dir, "cost_by_meter_cat.csv")
-    await cost_by_account(df, report_dir, "cost_by_account.csv")
-    await cost_by_month(df, report_dir, "cost_by_month.csv")
+    await asyncio.gather(
+        cost_by_sub(df, report_dir, "cost_by_subscription.csv"),
+        cost_by_meter_cat(df, report_dir, "cost_by_meter_cat.csv"),
+        cost_by_account(df, report_dir, "cost_by_account.csv"),
+        cost_by_month(df, report_dir, "cost_by_month.csv"),
+        cost_by_meter(df, report_dir, "cost_by_meter.csv"),
+    )
 
 
 if __name__ == "__main__":

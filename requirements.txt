@@ -1,5 +1,5 @@
 aiohttp==3.9.5
 asyncio==3.4.3
-azure-storage-blob==12.19.1
+azure-storage-blob==12.20.0
 pandas==2.2.2
 python-dotenv==1.0.0

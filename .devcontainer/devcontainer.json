@@ -1,5 +1,5 @@
 {
-  "image": "lamoreauxlab.azurecr.io/devcontainer/python:2024.05.0.dev20240509T0058",
+  "image": "lamoreauxlab.azurecr.io/devcontainer/python:latest",
   "features": {},
   "customizations": {
     "vscode": {
@@ -9,15 +9,12 @@
         "github.vscode-github-actions",
         "hediet.vscode-drawio",
         "IronGeek.vscode-env",
-        "lextudio.restructuredtext",
         "ms-azuretools.vscode-docker",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
-        "swyddfa.esbonio",
         "tamasfe.even-better-toml",
-        "timonwong.shellcheck",
-        "trond-snekvik.simple-rst"
+        "timonwong.shellcheck"
       ],
       // Please keep this file in sync with settings in ./.vscode/settings.default.json
       "settings": {

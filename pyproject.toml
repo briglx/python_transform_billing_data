@@ -7,7 +7,7 @@ name = "python_transform_billing_data"
 version = "0.0.1"
 license = { text = "MIT" }
 description = "An example python project transforming billing data"
-readme = "README.rst"
+readme = "README.md"
 authors = [{ name = "briglx", email = "info@golamoreaux.com" }]
 classifiers = [
     "Programming Language :: Python :: 3",

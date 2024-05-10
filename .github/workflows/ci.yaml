@@ -133,11 +133,6 @@ jobs:
           . venv/bin/activate
           pre-commit run --hook-stage manual shellcheck --all-files --show-diff-on-failure
 
-      - name: Run rstcheck
-        run: |
-          . venv/bin/activate
-          pre-commit run --hook-stage manual rstcheck --all-files --show-diff-on-failure
-
       - name: Python Lint
         id: python-lint
         run: |

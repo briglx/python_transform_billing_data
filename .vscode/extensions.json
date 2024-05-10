@@ -5,14 +5,11 @@
     "github.vscode-github-actions",
     "hediet.vscode-drawio",
     "IronGeek.vscode-env",
-    "lextudio.restructuredtext",
     "ms-azuretools.vscode-docker",
     "ms-python.python",
     "ms-python.vscode-pylance",
     "ms-toolsai.jupyter",
-    "swyddfa.esbonio",
     "tamasfe.even-better-toml",
-    "timonwong.shellcheck",
-    "trond-snekvik.simple-rst"
+    "timonwong.shellcheck"
   ]
 }

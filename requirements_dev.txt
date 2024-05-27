@@ -2,7 +2,7 @@
 
 bandit[toml]==1.7.8
 black==24.4.2
-codespell==2.2.6
+codespell==2.3.0
 flake8-docstrings==1.6.0
 flake8==7.0.0
 ipython==8.24.0
